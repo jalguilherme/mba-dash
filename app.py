@@ -4,6 +4,8 @@ import plotly.express as px
 import pandas as pd
 import os
 
+app = dash.Dash(__name__)
+
 # Dados fictícios de inflação (%)
 df = pd.DataFrame({
     "Cidade": [
@@ -55,4 +57,5 @@ def atualizar_grafico(cidade_selecionada):
     return fig
 
 if __name__ == '__main__':
+    server = app.server
     app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 8050)))
