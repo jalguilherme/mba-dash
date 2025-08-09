@@ -52,7 +52,7 @@ def atualizar_grafico(cidade_selecionada):
         color="Cidade",  # cada cidade com cor própria
         title=f"Inflação Trimestral - {cidade_selecionada} (2024)",
         labels={"Inflação": "Inflação (%)"}
-    )
+    ) 
     return fig
 
 if __name__ == '__main__':
