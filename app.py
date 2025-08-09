@@ -56,6 +56,6 @@ def atualizar_grafico(cidade_selecionada):
     fig.update_traces(marker_color="orange")
     return fig
 
+server = app.server
 if __name__ == '__main__':
-    server = app.server
-    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 8050)))
+    app.run_server(host="0.0.0.0", port=int(os.environ.get("PORT", 8050)), debug=True)
