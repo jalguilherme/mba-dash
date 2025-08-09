@@ -4,8 +4,6 @@ import plotly.express as px
 import pandas as pd
 import os
 
-app = dash.Dash(__name__)
-
 # Dados fictícios de inflação (%)
 df = pd.DataFrame({
     "Cidade": [
@@ -26,6 +24,7 @@ df = pd.DataFrame({
 })
 
 app = dash.Dash(__name__)
+server = app.server
 
 app.layout = html.Div([
     html.H1("Dashboard Interativo - Inflação 2024"),
@@ -50,12 +49,11 @@ def atualizar_grafico(cidade_selecionada):
         df_filtrado,
         x="Trimestre",
         y="Inflação",
+        color="Cidade",  # cada cidade com cor própria
         title=f"Inflação Trimestral - {cidade_selecionada} (2024)",
         labels={"Inflação": "Inflação (%)"}
     )
-    fig.update_traces(marker_color="orange")
     return fig
 
-server = app.server
 if __name__ == '__main__':
     app.run_server(host="0.0.0.0", port=int(os.environ.get("PORT", 8050)), debug=True)
